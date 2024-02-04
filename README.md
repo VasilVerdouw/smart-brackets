@@ -1,5 +1,7 @@
 # Smart Brackets README
 
+No more going to the end of the line before placing your semicolon or brackets!
+
 (VERY EARLY VERSION, WIP) Does your code always end up looking like this:
 
 ```js
@@ -57,5 +59,7 @@ Please check all our issues on [GitHub](https://github.com/VasilVerdouw/smart-br
 ## Contribution
 
 All contributions are welcome and appreciated!
+
 Please contribute new features on [GitHub](https://github.com/VasilVerdouw/smart-brackets).
+
 Check out the [CONTRIBUTING](./CONTRIBUTING) file for more information.
