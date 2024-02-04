@@ -1,5 +1,3 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { Operation } from './base-operation';
 import { SemicolonInString } from './operations/semicolon-in-string';
@@ -32,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
         let position = event.contentChanges[0].range.start;
 
         for (let operation of activeOperations) {
-            if (operation.check(line.text)) {
+            if (operation.check(line.text, editor)) {
                 operation.run(editor, line, position);
                 return;
             }

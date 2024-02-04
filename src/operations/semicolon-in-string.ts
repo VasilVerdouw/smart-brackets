@@ -1,10 +1,14 @@
-import { TextEditor, TextLine, Position, Selection, WorkspaceConfiguration } from 'vscode';
+import { TextEditor, TextLine, Position, Selection } from 'vscode';
 import { Operation } from '../base-operation';
 
 export class SemicolonInString extends Operation {
-    public id = 'semicolon-in-string';
+    id = 'semicolon-in-string';
+    supportedLanguages = [];
 
-    public check(text: string): boolean {
+    public check(text: string, editor: TextEditor): boolean {
+        if(!this.supportsCurrentLanguage(editor))
+            return false;
+
         return text.endsWith(';"') || text.endsWith(";'");
     }
 
