@@ -29,7 +29,7 @@ let example = "semicolon;"
 let example = "semicolon";
 ```
 
-Other actions are W.I.P.
+Other operations are W.I.P.
 
 
 ## Extension Settings
@@ -52,8 +52,10 @@ Currently the following settings are available:
 
 ## Known Issues
 
-Semicolon in string checking is currently too simple.
+Please check all our issues on [GitHub](https://github.com/VasilVerdouw/smart-brackets/issues).
 
 ## Contribution
 
+All contributions are welcome and appreciated!
 Please contribute new features on [GitHub](https://github.com/VasilVerdouw/smart-brackets).
+Check out the [CONTRIBUTING](./CONTRIBUTING) file for more information.
