@@ -21,6 +21,7 @@ Like you intended to! No more mistakes because you forgot to use the arrow keys!
 
 Currently Smart Brackets supports te following corrections:
 
+### Semicolon in string correction
 ```js
 // User placed
 let example = "semicolon;"
@@ -53,4 +54,6 @@ Currently the following settings are available:
 
 Semicolon in string checking is currently too simple.
 
-Please contribute to 
+## Contribution
+
+Please contribute new features on [GitHub](https://github.com/VasilVerdouw/smart-brackets).

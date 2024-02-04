@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     updateActiveOperations();
 
-    let documentChange = vscode.workspace.onDidChangeTextDocument((event) => {
+    let documentChange = vscode.workspace.onDidChangeTextDocument((event: vscode.TextDocumentChangeEvent) => {
         let editor = vscode.window.activeTextEditor;
         if(!editor) return;
 
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    let settingsChange = vscode.workspace.onDidChangeConfiguration((event) => {
+    let settingsChange = vscode.workspace.onDidChangeConfiguration((event: vscode.ConfigurationChangeEvent) => {
         if (event.affectsConfiguration('smart-brackets')) {
             config = vscode.workspace.getConfiguration('smart-brackets');
             updateActiveOperations();
