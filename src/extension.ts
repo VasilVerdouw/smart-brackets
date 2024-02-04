@@ -23,7 +23,9 @@ export function activate(context: vscode.ExtensionContext) {
 
     let documentChange = vscode.workspace.onDidChangeTextDocument((event: vscode.TextDocumentChangeEvent) => {
         let editor = vscode.window.activeTextEditor;
-        if(!editor) return;
+        if(!editor) {
+            return;
+        };
 
         let document = editor.document;
         let line = document.lineAt(event.contentChanges[0].range.start.line);

@@ -6,8 +6,9 @@ export class SemicolonInString extends Operation {
     supportedLanguages = [];
 
     public check(text: string, editor: TextEditor): boolean {
-        if(!this.supportsCurrentLanguage(editor))
+        if(!this.supportsCurrentLanguage(editor)) {
             return false;
+        }
 
         return text.endsWith(';"') || text.endsWith(";'");
     }
