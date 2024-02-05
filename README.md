@@ -62,4 +62,4 @@ All contributions are welcome and appreciated!
 
 Please contribute new features on [GitHub](https://github.com/VasilVerdouw/smart-brackets).
 
-Check out the [CONTRIBUTING](./CONTRIBUTING) file for more information.
+Check out the [CONTRIBUTING](https://github.com/VasilVerdouw/smart-brackets/blob/main/CONTRIBUTING.md) file for more information.

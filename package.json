@@ -1,8 +1,14 @@
 {
   "name": "smart-brackets",
   "displayName": "smart-brackets",
-  "description": "",
+  "publisher": "vasilverdouw",
+  "description": "No more going to the end of the line to add a semicolon or brackets.",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VasilVerdouw/smart-brackets"
+  },
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.86.0"
   },
