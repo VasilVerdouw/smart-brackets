@@ -25,7 +25,14 @@ Like you intended to! No more manually moving the cursor and no more mistakes be
 
 Currently Smart Brackets supports te following corrections:
 
+### Typing detection
+
+All below operations will only be applied when you're typing! When moving the cursor to the position and deliberately placing the character Smart Brackets won't mess up your code.
+
+If you actually meant to place a character a certain way and Smart Brackets moved it to the wrong position, just press ctrl + z (undo) to keep it your way.
+
 ### Semicolon in string correction
+
 ```js
 // User placed
 let example = "semicolon;"
@@ -36,6 +43,7 @@ example('semicolon');
 ```
 
 ### Semicolon in parenthesis correction
+
 ```js
 // User placed
 example(;)

@@ -12,7 +12,7 @@ export class SemicolonInParenthesis extends Operation {
 
         // Make sure the text ends with a semicolon and a parenthesis
         // but isn't just a for loop or something similar
-        return (text.endsWith(';)') || text.endsWith(';))')|| text.endsWith(';)))')) && !text.trimStart().startsWith('for');
+        return (text.endsWith(';)') || text.endsWith(';))')|| text.endsWith(';)))') || text.endsWith(';))))')) && !text.trimStart().startsWith('for');
     }
 
     public run(editor: TextEditor, line: TextLine, position: Position): void {
@@ -23,6 +23,8 @@ export class SemicolonInParenthesis extends Operation {
             newText = line.text.slice(0, line.text.length - 3) +  '));';
         } else if(line.text.endsWith(';)))')) {
             newText = line.text.slice(0, line.text.length - 4) +  ')));';
+        } else if(line.text.endsWith(';))))')) {
+            newText = line.text.slice(0, line.text.length - 5) +  ')))));';
         }
 
         let newCursorPosition = new Position(position.line, newText.length);
