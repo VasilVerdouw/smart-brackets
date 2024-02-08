@@ -10,7 +10,7 @@
   },
   "icon": "logo.png",
   "engines": {
-    "vscode": "^1.50.0"
+    "vscode": "^1.70.0"
   },
   "categories": [
     "Other"
@@ -60,7 +60,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.86.0",
+    "@types/vscode": "^1.70.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
