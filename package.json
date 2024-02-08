@@ -1,8 +1,8 @@
 {
   "name": "smart-brackets",
-  "displayName": "smart-brackets",
+  "displayName": "Smart Brackets",
   "publisher": "vasilverdouw",
-  "description": "No more going to the end of the line to add a semicolon or brackets.",
+  "description": "Easily add semicolons and brackets!",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -39,6 +39,11 @@
           "type": "boolean",
           "default": true,
           "description": "Enable/Disable semicolon in string correction."
+        },
+        "smart-brackets.semicolon-in-parenthesis.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable semicolon in parenthesis correction."
         }
       }
     }

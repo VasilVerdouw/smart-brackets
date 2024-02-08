@@ -1,8 +1,10 @@
 # Smart Brackets README
 
 No more going to the end of the line before placing your semicolon or brackets!
+ 
+You can easily write code without using your arrow keys like this:
 
-(VERY EARLY VERSION, WIP) Does your code always end up looking like this:
+(Extension is WIP: Input and code contributions are very welcome!!)
 
 ```js
 let example = "placed semicolon;"
@@ -16,7 +18,7 @@ let example "placed semicolon";
 let placedBrackets () {} // Not yet implemented
 ```
 
-Like you intended to! No more mistakes because you forgot to use the arrow keys!
+Like you intended to! No more manually moving the cursor and no more mistakes because you forgot to use the arrow keys!
 
 
 ## Features
@@ -27,8 +29,18 @@ Currently Smart Brackets supports te following corrections:
 ```js
 // User placed
 let example = "semicolon;"
+example('semicolon;')
 // Smart Brackets correction
 let example = "semicolon";
+example('semicolon');
+```
+
+### Semicolon in parenthesis correction
+```js
+// User placed
+example(;)
+// Smart Brackets correction
+example();
 ```
 
 Other operations are W.I.P.
@@ -39,18 +51,7 @@ Other operations are W.I.P.
 Every feature can be turned on or off in the settings.
 Currently the following settings are available:
 
-<table>
-    <tr>
-        <th>Setting</th>
-        <th>Description</th>
-        <th>Default</th>
-    </tr>
-    <tr>
-        <td>smart-brackets.semicolon-in-string.enable</td>
-        <td>Enable/Disable semicolon in string correction.</td>
-        <td>True</td>
-    </tr>
-</table>
+*Please check the "Feature contributions" tab on this page*
 
 ## Known Issues
 

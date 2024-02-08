@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { Operation } from './base-operation';
 import { SemicolonInString } from './operations/semicolon-in-string';
+import { SemicolonInParenthesis } from './operations/semicolon-in-parenthesis';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -8,7 +9,8 @@ export function activate(context: vscode.ExtensionContext) {
     let config = vscode.workspace.getConfiguration('smart-brackets');
 
     const operations: Operation[] = [
-        new SemicolonInString()
+        new SemicolonInString(),
+        new SemicolonInParenthesis()
     ];
 
     let activeOperations: Operation[] = [];
