@@ -10,13 +10,22 @@
   },
   "icon": "logo.png",
   "engines": {
-    "vscode": "^1.86.0"
+    "vscode": "^1.50.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:javascript"
+    "onLanguage:java",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:dart",
+    "onLanguage:csharp",
+    "onLanguage:cpp",
+    "onLanguage:java",
+    "onLanguage:php",
+    "onLanguage:go",
+    "onLanguage:rust"
   ],
   "main": "./dist/extension.js",
   "contributes": {
