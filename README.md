@@ -4,6 +4,8 @@ No more going to the end of the line before placing your semicolon or brackets!
  
 You can easily write code without using your arrow keys like this:
 
+![Smart Brackets demo GIF](./smart-brackets-demo.gif)
+
 (Extension is WIP: Input and code contributions are very welcome!!)
 
 ```js

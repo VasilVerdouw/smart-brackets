@@ -22,7 +22,6 @@
     "onLanguage:dart",
     "onLanguage:csharp",
     "onLanguage:cpp",
-    "onLanguage:java",
     "onLanguage:php",
     "onLanguage:go",
     "onLanguage:rust"
