@@ -1,4 +1,4 @@
-# Smart Brackets README
+# Increase your productivity
 
 No more going to the end of the line before placing your semicolon or brackets!
  
