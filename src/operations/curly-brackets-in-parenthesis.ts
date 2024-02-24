@@ -9,11 +9,24 @@ export class CurlyBracketsInParenthesis extends Operation {
     protected supportedLanguages = [];
 
     public check(text: string, editor: TextEditor, lastChanges: LastChanges): boolean {
-        if(!this.supportsCurrentLanguage(editor)) {
+        if (!this.supportsCurrentLanguage(editor)) {
             return false;
         }
 
-        if(!lastChanges.lastChangesEqualTo(' ', '{}') || text.endsWith(', {})') || text.endsWith(', {}))')) {
+        // The second to last text.match should avoid the operation being run in some cases when it shouldn't.
+        // Like callback functions for example.
+        // JS example: "someFunction(() => {})" should not be changed.
+        // See: regexr.com/7sgi8
+
+        // This last text.match should avoid the operation being run in some cases when it shouldn't.
+        // Dart example: "Button(onPressed: () {})" should not be changed.
+        // See: regexr.com/7sghs
+        if (!lastChanges.lastChangesEqualTo(' ', '{}')
+            || text.endsWith(', {})')
+            || text.endsWith(', {}))') 
+            || text.endsWith('(() {})') 
+            || text.match(/( |,|\()+(\(\))|, ?(=>|async)? ?{}(\))+/) !== null
+            || text.match(/([a-zA-z])*: ?\(\) ?(async)?(=>)? ?{} ?\)+/) !== null) {
             return false;
         }
 
