@@ -2,6 +2,18 @@
 
 All notable changes to the "Smart Brackets" extension will be documented in this file.
 
+## 0.3.0
+
+- The old typing detection system has been removed as it was inaccurate
+- A new system has been made to detect latest changes.
+    - Operations can choose to respond to only certain changes (e.g. only respond when a semicolon is being added at that moment, but don't respond when a bracket is being added after a semicolon)
+
+## 0.2.0
+
+- Added support for Vue
+- Small changes to Marketplace description
+    - Added a gif to show how the extension works
+
 ## 0.1.0
 
 - Semicolon in string detection will now also trigger when string is in parenthesis
