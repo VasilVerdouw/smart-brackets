@@ -59,15 +59,15 @@ void example(bool isTrue) {}
 ```
 
 This operation doesn't trigger when you don't want it to. For example the following scenarios will not trigger the operation:
-    - `function(() {})`
-    - `function(true, () {})`
-    - `function(true, (() {}))`
-    - `function((true, () {}))`
-    - `function(() => {})`
-    - `function(true, {})`
-    - `Button(onPressed: () async {})`
-    - `Button(onPressed: () => {})`
-    - `function(test: {})`
+- `function(() {})`
+- `function(true, () {})`
+- `function(true, (() {}))`
+- `function((true, () {}))`
+- `function(() => {})`
+- `function(true, {})`
+- `Button(onPressed: () async {})`
+- `Button(onPressed: () => {})`
+- `function(test: {})`
 
 ### Semicolon in parenthesis correction
 
