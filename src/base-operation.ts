@@ -1,4 +1,5 @@
 import { Position, TextEditor, TextLine, WorkspaceConfiguration } from "vscode";
+import { LastChanges } from "./last-changes";
 
 export abstract class Operation {
     /**
@@ -30,7 +31,7 @@ export abstract class Operation {
      * @param editor current active text editor (vscode.window.activeTextEditor)
      * @returns true if the operation should run on the current line, false if it should not.
      */
-    public abstract check(text: string, editor: TextEditor): boolean;
+    public abstract check(text: string, editor: TextEditor, lastChanges: LastChanges): boolean;
 
     /**
      * Runs the operation on the current line.

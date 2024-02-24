@@ -2,11 +2,13 @@ import * as vscode from 'vscode';
 import { Operation } from './base-operation';
 import { SemicolonInString } from './operations/semicolon-in-string';
 import { SemicolonInParenthesis } from './operations/semicolon-in-parenthesis';
+import { LastChanges } from './last-changes';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
     let config = vscode.workspace.getConfiguration('smart-brackets');
+    let lastChanges = new LastChanges();
 
     const operations: Operation[] = [
         new SemicolonInString(),
@@ -21,8 +23,6 @@ export function activate(context: vscode.ExtensionContext) {
         });
     }
 
-    let lastCursorPosition: vscode.Position | undefined;
-
     updateActiveOperations();
 
     let documentChange = vscode.workspace.onDidChangeTextDocument((event: vscode.TextDocumentChangeEvent) => {
@@ -35,16 +35,11 @@ export function activate(context: vscode.ExtensionContext) {
         let line = document.lineAt(event.contentChanges[0].range.start.line);
         let position = event.contentChanges[0].range.start;
 
-        // Checks if user is typing, we check this to make sure user actually
-        // accidentally typed a semicolon and it wasn't placed on purpose.
-        if ((lastCursorPosition && (lastCursorPosition.isEqual(position) || lastCursorPosition.isEqual(position.translate(0, 1))))) {
-            lastCursorPosition = position;
-            return;
-        }
-        lastCursorPosition = position;
+        let lastChange = event.contentChanges[0].text;
+        lastChanges.addChange(lastChange);
         
         for (let operation of activeOperations) {
-            if (operation.check(line.text, editor)) {
+            if (operation.check(line.text, editor, lastChanges)) {
                 operation.run(editor, line, position);
                 return;
             }

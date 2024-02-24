@@ -1,12 +1,17 @@
 import { TextEditor, TextLine, Position, Selection } from 'vscode';
 import { Operation } from '../base-operation';
+import { LastChanges } from '../last-changes';
 
 export class SemicolonInParenthesis extends Operation {
     id = 'semicolon-in-parenthesis';
     supportedLanguages = [];
 
-    public check(text: string, editor: TextEditor): boolean {
+    public check(text: string, editor: TextEditor, lastChanges: LastChanges): boolean {
         if(!this.supportsCurrentLanguage(editor)) {
+            return false;
+        }
+
+        if(lastChanges.getLatestChange() != ';') {
             return false;
         }
 
