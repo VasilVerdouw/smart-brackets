@@ -3,6 +3,7 @@ import { Operation } from './base-operation';
 import { SemicolonInString } from './operations/semicolon-in-string';
 import { SemicolonInParenthesis } from './operations/semicolon-in-parenthesis';
 import { LastChanges } from './last-changes';
+import { CurlyBracketsInParenthesis } from './operations/curly-brackets-in-parenthesis';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -12,7 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     const operations: Operation[] = [
         new SemicolonInString(),
-        new SemicolonInParenthesis()
+        new SemicolonInParenthesis(),
+        new CurlyBracketsInParenthesis(),
     ];
 
     let activeOperations: Operation[] = [];

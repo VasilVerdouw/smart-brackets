@@ -40,12 +40,17 @@
         "smart-brackets.semicolon-in-string.enable": {
           "type": "boolean",
           "default": true,
-          "description": "Enable/Disable semicolon in string correction."
+          "description": "Enable/Disable semicolon in string correction. EG: `\"Hello;\"` -> `\"Hello\";`"
         },
         "smart-brackets.semicolon-in-parenthesis.enable": {
           "type": "boolean",
           "default": true,
-          "description": "Enable/Disable semicolon in parenthesis correction."
+          "description": "Enable/Disable semicolon in parenthesis correction. EG: `(Hello;)` -> `(Hello);`"
+        },
+        "smart-brackets.curly-brackets-in-parenthesis.enable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable curly brackets in parenthesis correction. EG: `void Hello( {})` -> `void Hello() {}`. (Disabled by default because it's unknown if it's annoying in some languages or situations. Please provide feedback on GitHub.)"
         }
       }
     }
