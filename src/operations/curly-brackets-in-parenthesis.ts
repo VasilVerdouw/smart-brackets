@@ -25,8 +25,8 @@ export class CurlyBracketsInParenthesis extends Operation {
             || text.endsWith(', {})')
             || text.endsWith(', {}))') 
             || text.endsWith('(() {})') 
-            || text.match(/( |,|\()+(\(\))|, ?(=>|async)? ?{}(\))+/) !== null
-            || text.match(/([a-zA-z])*: ?\(\) ?(async)?(=>)? ?{} ?\)+/) !== null) {
+            || text.match(/( |,|\()+(\(\)) ?(=>)? ?(async)? ?{}(\))+/) !== null
+            || text.match(/([a-zA-z])*: ?(\(\))? ?(async)? ?(=>)? ?{} ?\)+/) !== null) {
             return false;
         }
 

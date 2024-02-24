@@ -6,18 +6,16 @@ You can easily write code without using your arrow keys like this:
 
 ![Smart Brackets demo GIF](./smart-brackets-demo.gif)
 
-(Extension is WIP: Input and code contributions are very welcome!!)
-
 ```js
 let example = "placed semicolon;"
-void placedBrackets ({}) // Not yet implemented
+void placedBrackets ( {})
 ```
 
 Using Smart Brackets this will automatically be replaced to this:
 
 ```js
 let example "placed semicolon";
-let placedBrackets () {} // Not yet implemented
+let placedBrackets () {} 
 ```
 
 Like you intended to! No more manually moving the cursor and no more mistakes because you forgot to use the arrow keys!
@@ -43,6 +41,33 @@ example('semicolon;')
 let example = "semicolon";
 example('semicolon');
 ```
+
+### Curly brackets in parenthesis correction
+
+This operation is experimental and for that reason off by default.
+
+Please provide feedback on GitHub if you encounter any issues with this operation or would like it to be enabled by default.
+
+*Only triggered when pressing ` `(spacebar) and `{`(curly bracket) in that order.*
+
+```c
+// User placed
+void example(bool isTrue {})
+if (isTrue() {})
+// Smart Brackets correction
+void example(bool isTrue) {}
+```
+
+This operation doesn't trigger when you don't want it to. For example the following scenarios will not trigger the operation:
+    - `function(() {})`
+    - `function(true, () {})`
+    - `function(true, (() {}))`
+    - `function((true, () {}))`
+    - `function(() => {})`
+    - `function(true, {})`
+    - `Button(onPressed: () async {})`
+    - `Button(onPressed: () => {})`
+    - `function(test: {})`
 
 ### Semicolon in parenthesis correction
 

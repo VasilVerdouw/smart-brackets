@@ -4,6 +4,21 @@ All notable changes to the "Smart Brackets" extension will be documented in this
 
 ## 0.3.0
 
+- New operation, Curly brackets in parenthesis detection!
+    - Please note, this operation is currently experimental and is for that reason disabled by default. To enable it, go to the extension settings and enable it there.
+    - For example typing `void example(bool isTrue {})` will be replaced by `void example(bool isTrue) {}`
+    - This operation will only run when typing ` ` and `{` in that order.
+    - This operation doesn't trigger when you don't want it to. For example the following scenarios will not trigger the operation:
+        - `function(() {})`
+        - `function(true, () {})`
+        - `function(true, (() {}))`
+        - `function((true, () {}))`
+        - `function(() => {})`
+        - `function(true, {})`
+        - `Button(onPressed: () async {})`
+        - `Button(onPressed: () => {})`
+        - `function(test: {})`
+    - If more scenarios are found where the operation triggers when it shouldn't, please let me know.
 - The old typing detection system has been removed as it was inaccurate
 - A new system has been made to detect latest changes.
     - Operations can choose to respond to only certain changes (e.g. only respond when a semicolon is being added at that moment, but don't respond when a bracket is being added after a semicolon)
