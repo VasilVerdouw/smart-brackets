@@ -3,7 +3,7 @@
   "displayName": "Smart Brackets",
   "publisher": "vasilverdouw",
   "description": "Easily add semicolons and brackets!",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/VasilVerdouw/smart-brackets"
