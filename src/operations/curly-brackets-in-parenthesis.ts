@@ -1,4 +1,4 @@
-import { TextEditor, TextLine, Position, Selection } from "vscode";
+import { TextEditor, TextLine, Position, Selection, TextEditorEdit } from "vscode";
 import { Operation } from "../base-operation";
 import { LastChanges } from "../last-changes";
 
@@ -42,7 +42,7 @@ export class CurlyBracketsInParenthesis extends Operation {
         }
         let newCursorPosition = new Position(position.line, newText.length - 1);
 
-        editor.edit(editBuilder => {
+        editor.edit((editBuilder: TextEditorEdit) => {
             editBuilder.replace(line.range, newText);
         }).then(() => {
             editor.selection = new Selection(newCursorPosition, newCursorPosition);

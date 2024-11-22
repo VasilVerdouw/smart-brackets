@@ -29,24 +29,24 @@ export function activate(context: vscode.ExtensionContext) {
 
     let documentChange = vscode.workspace.onDidChangeTextDocument((event: vscode.TextDocumentChangeEvent) => {
         let editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            return;
-        };
-
-        let document = editor.document;
-        let line = document.lineAt(event.contentChanges[0].range.start.line);
-        let position = event.contentChanges[0].range.start;
+        if (!editor) return;
 
         let lastChange = event.contentChanges[0].text;
         lastChanges.addChange(lastChange);
-        
-        for (let operation of activeOperations) {
-            if (operation.check(line.text, editor, lastChanges)) {
-                operation.run(editor, line, position);
-                return;
+
+        for (let contentChange of event.contentChanges) {
+            let document = editor.document;
+            let position = contentChange.range.start;
+
+            for (let operation of activeOperations) {
+                editor.selections.forEach(selection => {
+                    let line = document.lineAt(selection.active.line);
+                    if (operation.check(line.text, editor!, lastChanges)) {
+                        operation.run(editor!, line, position);
+                    }
+                });
             }
         }
-
     });
 
     let settingsChange = vscode.workspace.onDidChangeConfiguration((event: vscode.ConfigurationChangeEvent) => {
