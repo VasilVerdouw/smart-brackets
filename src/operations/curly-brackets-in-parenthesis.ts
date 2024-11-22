@@ -23,8 +23,8 @@ export class CurlyBracketsInParenthesis extends Operation {
         // See: regexr.com/7sghs
         if (!lastChanges.lastChangesEqualTo(' ', '{}')
             || text.endsWith(', {})')
-            || text.endsWith(', {}))') 
-            || text.endsWith('(() {})') 
+            || text.endsWith(', {}))')
+            || text.endsWith('(() {})')
             || text.match(/( |,|\()+(\(\)) ?(=>)? ?(async)? ?{}(\))+/) !== null
             || text.match(/([a-zA-z])*: ?(\(\))? ?(async)? ?(=>)? ?{} ?\)+/) !== null) {
             return false;
@@ -33,20 +33,19 @@ export class CurlyBracketsInParenthesis extends Operation {
         return text.endsWith(' {})') || text.endsWith(' {}))');
     }
 
-    public run(editor: TextEditor, line: TextLine, position: Position): void {
+    public run(editBuilder: TextEditorEdit, line: TextLine, position: Position): void {
         let newText = '';
         if (line.text.endsWith(' {})')) {
             newText = line.text.slice(0, line.text.length - 4) + ') {}';
         } else if (line.text.endsWith(' {}))')) {
             newText = line.text.slice(0, line.text.length - 5) + ')) {}';
         }
-        let newCursorPosition = new Position(position.line, newText.length - 1);
-
-        editor.edit((editBuilder: TextEditorEdit) => {
-            editBuilder.replace(line.range, newText);
-        }).then(() => {
-            editor.selection = new Selection(newCursorPosition, newCursorPosition);
-        });
+        this.changedLines.push(position.line);
+        editBuilder.replace(line.range, newText);
     }
 
+    protected newLineSelection(line: TextLine): Selection {
+        let newCursorPosition = new Position(line.lineNumber, line.text.length - 1);
+        return new Selection(newCursorPosition, newCursorPosition);
+    }
 }

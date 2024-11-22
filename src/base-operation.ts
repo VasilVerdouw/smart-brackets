@@ -1,4 +1,4 @@
-import { Position, TextEditor, TextLine, WorkspaceConfiguration } from "vscode";
+import { Position, Selection, TextEditor, TextEditorEdit, TextLine, WorkspaceConfiguration } from "vscode";
 import { LastChanges } from "./last-changes";
 
 export abstract class Operation {
@@ -6,6 +6,11 @@ export abstract class Operation {
      * The unique identifier for this operation. This is used to enable/disable the operation in the settings.
      */
     public abstract id: string;
+    
+    /**
+     * The lines the operation has changed when since the last time finish() was called.
+     */
+    protected changedLines: number[] = [];
     
     /**
      * The languages that this operation supports. If empty, the operation will run on all languages.
@@ -36,9 +41,35 @@ export abstract class Operation {
     /**
      * Runs the operation on the current line.
      * 
-     * @param editor current active text editor (vscode.window.activeTextEditor)
+     * @param editBuilder current active edit builder
      * @param line the current line
      * @param position the position of the cursor
      */
-    public abstract run(editor: TextEditor, line: TextLine, position: Position): void;
+    public abstract run(editBuilder: TextEditorEdit, line: TextLine, position: Position): void;
+
+    /**
+     * Finishes the operation. This is called after all operations have run on all lines.
+     * 
+     * @param editor current active text editor (vscode.window.activeTextEditor)
+     */
+    public finish(editor: TextEditor): void {
+        editor.selections = editor.selections.map(selection => {
+            if (this.changedLines.includes(selection.active.line)) {
+                return this.newLineSelection(editor.document.lineAt(selection.active.line));
+            } else {
+                return selection;
+            }
+        });
+        this.changedLines = [];
+    }
+
+    /**
+     * Returns a new selection for a line that has been changed by this operation.
+     * For example, if the operation adds a character to the end of the line, this method
+     * should return a selection that puts the cursor at the end of the line.
+     * 
+     * @param line the next line
+     * @returns a new selection for the next line
+     */
+    protected abstract newLineSelection(line: TextLine): Selection;
 }

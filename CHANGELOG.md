@@ -2,6 +2,13 @@
 
 All notable changes to the "Smart Brackets" extension will be documented in this file.
 
+## 0.4.1
+
+- Add basic multi cursor support
+    - Limitations apply: Only 1 type of operation can be done at the same time. Any other operation that is triggered by one of the cursors might cause unexpected behavior.
+    - Refer to issue [#5](https://github.com/VasilVerdouw/smart-brackets/issues/5) and [#6](https://github.com/VasilVerdouw/smart-brackets/issues/6) for more information.
+- Dependency updates
+
 ## 0.3.0
 
 - New operation, Curly brackets in parenthesis detection!

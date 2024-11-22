@@ -34,18 +34,20 @@ export function activate(context: vscode.ExtensionContext) {
         let lastChange = event.contentChanges[0].text;
         lastChanges.addChange(lastChange);
 
-        for (let contentChange of event.contentChanges) {
-            let document = editor.document;
-            let position = contentChange.range.start;
-
-            for (let operation of activeOperations) {
-                editor.selections.forEach(selection => {
-                    let line = document.lineAt(selection.active.line);
+        let document = editor.document;
+        for (let operation of activeOperations) {
+            editor.edit((editBuilder: vscode.TextEditorEdit) => { 
+                for (let contentChange of event.contentChanges) {
+                    let position = contentChange.range.start;
+                    let line = document.lineAt(position.line);
+    
                     if (operation.check(line.text, editor!, lastChanges)) {
-                        operation.run(editor!, line, position);
+                        operation.run(editBuilder, line, position);
                     }
-                });
-            }
+                }
+            }).then(() => {
+                operation.finish(editor!);
+            });
         }
     });
 
